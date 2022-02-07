@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <%- include('./common/header') %>
+    
+    <h1>Home Page</h1>
+    <h1>Hello!!! <%= data.name %> jee Welcome to home page</h1>
+    <p>
+        <% data.subjects.forEach((element)=>{ %>
+            <li><%= element %></li>
+            <% }) %>
+    </p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt doloremque cupiditate magnam similique ullam velit nam reiciendis molestias aspernatur repellendus, iste laborum excepturi, eveniet mollitia est ratione, eius ducimus culpa repellat minima sit reprehenderit necessitatibus hic dignissimos? Quisquam accusamus doloremque officiis ullam earum est, labore porro optio rem minima quas unde saepe a dignissimos sed molestiae iure commodi quia expedita quaerat nostrum mollitia praesentium cumque iste! Tempora id ad iste modi assumenda quidem non asperiores, perspiciatis omnis corporis deserunt magni et, rem aliquid doloremque ab enim delectus nihil dolore! Aliquam earum ex quae laboriosam officiis quas consequatur fuga adipisci inventore?</p>
+<%- include('./common/footer') %>
+</body>
+</html>
