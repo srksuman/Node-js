@@ -1,5 +1,6 @@
 const express = require('express')
 var bodyParser = require('body-parser')
+const Data = require('./mongo')
 const app = express()
 
 app.use(bodyParser.json())
@@ -12,13 +13,28 @@ app.get('/form',(req,res)=>{
     res.render('form')
 })
 
-app.post('/show',urlencodedParser,(req,res)=>{
-    console.log(req.body)
-    data = {
+
+async function saveData(data){
+    form_data = new Data(data)
+   let result = await form_data.save()
+//    console.log(result)
+}
+
+const getData = async()=>{
+    const result = await Data.find()
+    return result;
+}
+
+app.post('/show',urlencodedParser,async(req,res)=>{
+    // console.log(req.body)
+    let data = {
         name:req.body.name,
         address:req.body.address
     }
-    res.render('show',{data})
+    saveData(data)
+    let  get_data = await getData();
+    console.log(get_data)
+    res.render('show')
 })
 
 
