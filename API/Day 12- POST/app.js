@@ -1,10 +1,16 @@
 const express = require('express');
-const Student = require('./connection');
+require('./connection');
+const Student = require('./StudentSchema');
 const app = express();
 const port = process.env.PORT || 3000
+app.use(express.json())
 
-app.post('/student',(req,res)=>{
-    console.log("connection created")
+app.post('/student',async(req,res)=>{
+    const studentData = new Student(req.body)
+    const result = await studentData.save()
+    res.status(201).send(result)
 })
 
-app.listen(port)
+app.listen(port,()=>{
+    console.log("Lisening on port numebr :-"+port)
+})
